@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S2AM - Société Africaine d'Automatisme et de Maintenance</title>
+    <!-- Framework CSS Tailwind pour un design moderne et responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        s2amNavy: '#0f2b48',
+                        s2amBlue: '#1e6091',
+                        s2amOrange: '#f37021',
+                        s2amGray: '#f8fafc'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-s2amGray text-gray-800 font-sans">
+
+    <!-- 1. BARRE DE NAVIGATION & ENTÊTE -->
+    <header class="bg-s2amNavy text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo Image -->
+            <div class="flex items-center space-x-3">
+                 <a href="#">
+                    <div class="logo"><img src="logo.png" alt="S2AM Logo" style="height: 80px;"></div>
+    </a>
+    <span class="hidden md:inline text-xs border-l border-gray-500 pl-3 leading-tight">
+        Société Africaine d'Automatisme<br>et de Maintenance
+    </span>
+</div>
+
+            <!-- Barre de recherche rapide de matériel -->
+            <div class="flex-1 max-w-md mx-6 hidden sm:block">
+                <form class="relative">
+                    <input type="text" placeholder="Rechercher une référence (ex: 6ES7, ATV320, C2000)..." 
+                           class="w-full px-4 py-2 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-s2amOrange text-sm">
+                    <button type="submit" class="absolute right-3 top-2.5 text-gray-500 hover:text-s2amOrange">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Liens d'action rapide -->
+            <div class="flex items-center space-x-4 text-sm">
+                <a href="#maintenance-urgence" class="bg-s2amOrange hover:bg-orange-600 text-white px-3 py-2 rounded-md font-semibold transition text-xs md:text-sm flex items-center">
+                    <i class="fa-solid fa-triangle-exclamation mr-2"></i> Urgence Panne
+                </a>
+                <a href="#panier-devis" class="relative text-white hover:text-s2amOrange">
+                    <i class="fa-solid fa-file-invoice text-xl"></i>
+                    <span class="absolute -top-2 -right-2 bg-s2amOrange text-white text-xs px-1.5 rounded-full">0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Menu principal -->
+        <nav class="bg-s2amBlue text-white text-sm border-t border-blue-900">
+            <div class="max-w-7xl mx-auto px-4 flex space-x-6 overflow-x-auto py-2">
+                <a href="#catalogue" class="hover:text-s2amOrange whitespace-nowrap font-medium"><i class="fa-solid fa-boxes-stacked mr-1"></i> Catalogue Matériel</a>
+                <a href="#maintenance" class="hover:text-s2amOrange whitespace-nowrap font-medium"><i class="fa-solid fa-screws-turn-gear mr-1"></i> Maintenance & Dépannage</a>
+                <a href="#formation" class="hover:text-s2amOrange whitespace-nowrap font-medium"><i class="fa-solid fa-graduation-cap mr-1"></i> Formations Techniques</a>
+                <a href="#solutions" class="hover:text-s2amOrange whitespace-nowrap font-medium"><i class="fa-solid fa-diagram-project mr-1"></i> Projets & Automatisme</a>
+                <a href="#contact" class="hover:text-s2amOrange whitespace-nowrap font-medium"><i class="fa-solid fa-envelope mr-1"></i> Contact / Devis</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 2. SECTION BANNIÈRE D'ACCUEIL (HERO CAROUSEL) -->
+    <section class="bg-gradient-to-r from-s2amNavy to-s2amBlue text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            
+            <!-- Colonne Gauche : Texte & Boutons -->
+            <div>
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+                    Votre Partenaire Global en <span class="text-s2amOrange">Automatisme</span> & Maintenance
+                </h1>
+                <p class="text-gray-200 mb-6 text-lg">
+                    Fourniture de composants industriels (neufs & reconditionnés), interventions de maintenance d'urgence, rétrofit et formations spécialisées.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#catalogue" class="bg-s2amOrange hover:bg-orange-600 px-6 py-3 rounded-lg font-bold shadow-lg transition">
+                        Explorer le Catalogue Matériel
+                    </a>
+                    <a href="#solutions" class="bg-white text-s2amNavy hover:bg-gray-100 px-6 py-3 rounded-lg font-bold shadow-lg transition">
+                        Demander une Étude de Projet
+                    </a>
+                </div>
+            </div>
+
+            <!-- Colonne Droite : Carrousel d'images -->
+            <div class="relative w-full overflow-hidden rounded-2xl shadow-2xl border border-white/20 group h-[400px]">
+                
+                <!-- Conteneur des slides -->
+                <div id="hero-slider" class="flex transition-transform duration-700 ease-in-out h-full w-full">
+                    <!-- Slide 1 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="photo1.jpeg" alt="S2AM Partenariat" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                            <p class="text-white font-semibold text-sm md:text-base">Partenariat & Expertises en Automatisme</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="photo2.jpeg" alt="S2AM Direction & Direction" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                            <p class="text-white font-semibold text-sm md:text-base">Accompagnement Sur-Mesure & Conseil</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="photo3.jpeg" alt="S2AM Équipe Technique" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                            <p class="text-white font-semibold text-sm md:text-base">Solutions d'Ingénierie & Maintenance</p>
+                        </div>
+					<!-- Slide 4 -->
+                    <div class="min-w-full h-full relative">
+                        <img src="photo4.jpeg" alt="S2AM Équipe Technique" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
+                            <p class="text-white font-semibold text-sm md:text-base">etude et conception de système</p>
+                        </div>	
+                    </div>
+                </div>
+
+                <!-- Boutons Précédent / Suivant -->
+                <button id="prevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-s2amOrange text-white p-2.5 rounded-full transition opacity-0 group-hover:opacity-100">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="nextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-s2amOrange text-white p-2.5 rounded-full transition opacity-0 group-hover:opacity-100">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <!-- Points de navigation -->
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+                    <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(0)"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(1)"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(2)"></button>
+					<button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(2)"></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    ipt>
+    <!-- 3. CATALOGUE PRODUITS & VENTE / DEVIS -->
+    <section id="catalogue" class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-s2amNavy">Matériel d'Automatisme & Pièces de Rechange</h2>
+                <p class="text-gray-600">Pièces neuves en boîte, reconditionnées testées et matériel obsolète.</p>
+            </div>
+            <a href="#" class="text-s2amBlue font-semibold hover:underline hidden sm:block">Voir tout le catalogue &rarr;</a>
+        </div>
+
+        <!-- Grille de produits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Produit 1 : Automate Siemens -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                <div class="p-4">
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded">Neuf Scellé</span>
+                    <span class="text-gray-400 text-xs float-right">Siemens</span>
+                    <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                        <i class="fa-solid fa-microchip text-5xl text-s2amNavy"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-1">SIMATIC S7-1200 CPU 1214C</h3>
+                    <p class="text-xs text-gray-500 mb-2">Réf: 6ES7214-1AG40-0XB0</p>
+                </div>
+                <div class="p-4 border-t border-gray-100 bg-gray-50">
+                    <div class="text-lg font-bold text-s2amNavy mb-3">En Stock</div>
+                    <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
+                        <i class="fa-solid fa-cart-shopping mr-1"></i> Commander
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 2 : Variateur Schneider -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                <div class="p-4">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">Reconditionné Testé</span>
+                    <span class="text-gray-400 text-xs float-right">Schneider</span>
+                    <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                        <i class="fa-solid fa-gauge-high text-5xl text-s2amNavy"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-1">Altivar ATV320 5.5kW</h3>
+                    <p class="text-xs text-gray-500 mb-2">Réf: ATV320HU55N4B</p>
+                </div>
+                <div class="p-4 border-t border-gray-100 bg-gray-50">
+                    <div class="text-lg font-bold text-s2amNavy mb-3">Sur Devis</div>
+                    <button class="w-full bg-s2amOrange hover:bg-orange-600 text-white text-sm font-semibold py-2 rounded transition">
+                        <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 3 : Variateur Delta -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                <div class="p-4">
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded">Neuf</span>
+                    <span class="text-gray-400 text-xs float-right">Delta Electronics</span>
+                    <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                        <i class="fa-solid fa-sliders text-5xl text-s2amNavy"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-1">Variateur Delta C2000+</h3>
+                    <p class="text-xs text-gray-500 mb-2">Réf: VFD075C43A-21</p>
+                </div>
+                <div class="p-4 border-t border-gray-100 bg-gray-50">
+                    <div class="text-lg font-bold text-s2amNavy mb-3">En Stock</div>
+                    <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
+                        <i class="fa-solid fa-cart-shopping mr-1"></i> Commander
+                    </button>
+                </div>
+            </div>
+
+            <!-- Produit 4 : Écran IHM Obsolète -->
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                <div class="p-4">
+                    <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-0.5 rounded">Obsolète / Rare</span>
+                    <span class="text-gray-400 text-xs float-right">Siemens</span>
+                    <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                        <i class="fa-solid fa-tv text-5xl text-s2amNavy"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-1">IHM KTP600 Basic Color</h3>
+                    <p class="text-xs text-gray-500 mb-2">Réf: 6AV6647-0AD11-3AX0</p>
+                </div>
+                <div class="p-4 border-t border-gray-100 bg-gray-50">
+                    <div class="text-lg font-bold text-s2amNavy mb-3">Disponibilité limitée</div>
+                    <button class="w-full bg-s2amOrange hover:bg-orange-600 text-white text-sm font-semibold py-2 rounded transition">
+                        <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. SECTION PRESTATIONS : MAINTENANCE & DÉPANNAGE + NOS RÉALISATIONS -->
+    <section id="maintenance" class="bg-white py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold text-s2amNavy">Maintenance & Dépannage Industriel</h2>
+                <p class="text-gray-600 mt-2">Assistance technique rapide, diagnostic d'urgence et maintenance préventive pour vos lignes de production.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="p-6 bg-s2amGray rounded-xl border border-gray-200 text-center">
+                    <div class="w-14 h-14 bg-s2amOrange text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Intervention Curative sur Site</h3>
+                    <p class="text-sm text-gray-600">Diagnostic de pannes sur automates, réseaux industriels, variateurs et armoires électriques.</p>
+                </div>
+
+                <div class="p-6 bg-s2amGray rounded-xl border border-gray-200 text-center">
+                    <div class="w-14 h-14 bg-s2amBlue text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Contrats de Maintenance</h3>
+                    <p class="text-sm text-gray-600">Planification de visites préventives pour sécuriser l'outil de production et éviter les arrêts d'usine.</p>
+                </div>
+
+                <div class="p-6 bg-s2amGray rounded-xl border border-gray-200 text-center">
+                    <div class="w-14 h-14 bg-s2amNavy text-white rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Réparation en Atelier</h3>
+                    <p class="text-sm text-gray-600">Test et remise en état de vos cartes électroniques, variateurs et modules d'automatismes.</p>
+                </div>
+            </div>
+
+            <!-- SOUS-SECTION : NOS RÉALISATIONS (PHOTOS & VIDÉOS) -->
+            <div class="border-t border-gray-100 pt-12">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Galerie Multimédia</span>
+                    <h3 class="text-2xl font-bold text-s2amNavy mt-1">Nos Réalisations & Interventions</h3>
+                    <p class="text-gray-600 text-sm mt-1">Aperçu en images et en vidéos de nos chantiers, armoires câblées et dépannages sur site.</p>
+                </div>
+
+                <!-- Grille des réalisations -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Élément 1 : Photo d'une armoire électrique -->
+                    <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                        <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
+                            <!-- Remplacez le src par le chemin de votre image (ex: src="images/armoire1.jpg") -->
+                            <img src="armoire.jpeg" alt="Rénovation Armoire Électrique" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="absolute inset-0 bg-s2amNavy/10 hidden items-center justify-center text-gray-400 text-xs">
+                                <i class="fa-solid fa-image text-3xl mr-2"></i> [Espace Photo Armoire]
+                            </div>
+                            <span class="absolute top-3 right-3 bg-s2amNavy text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-camera mr-1"></i> Photo</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-base text-s2amNavy mb-1">Rénovation d'armoire de commande</h4>
+                            <p class="text-xs text-gray-600">Câblage complet et intégration d'un automate Siemens pour une ligne d'embouteillage.</p>
+                        </div>
+                    </div>
+
+                    <!-- Élément 2 : Vidéo d'une intervention ou test -->
+                    <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                        <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
+                            <!-- Vous pouvez utiliser une balise <video controls> ou intégrer un iframe YouTube/Local -->
+                            <video class="w-full h-full object-cover" controls poster="poster_video.jpg">
+                                <source src="variateur.mp4" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture de vidéos.
+                            </video>
+                            <span class="absolute top-3 right-3 bg-s2amOrange text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-video mr-1"></i> Vidéo</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-base text-s2amNavy mb-1">Test en charge de variateur</h4>
+                            <p class="text-xs text-gray-600">Séquence de mise au point et paramétrage d'un variateur de fréquence à l'usine.</p>
+                        </div>
+                    </div>
+
+                    <!-- Élément 3 : Autre Photo de dépannage -->
+                    <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                        <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
+                            <video class="w-full h-full object-cover" controls poster="poster_video.jpg">
+                                <source src="FBR.mp4" type="video/mp4">
+                               
+                            </video>
+                            <span class="absolute top-3 right-3 bg-s2amNavy text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-camera mr-1"></i> Photo</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-base text-s2amNavy mb-1">retrofit d'un stérilisateur</h4>
+                            <p class="text-xs text-gray-600">automatisation de la régulation et mis en place d'un écran de supervision avec TIA portal.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECTION FORMATIONS TECHNIQUES -->
+    <section id="formation" class="py-12 bg-s2amGray">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl font-bold text-s2amNavy">Formations Professionnelles en Automatisme</h2>
+                <p class="text-gray-600 mt-2">Développez les compétences de vos équipes de maintenance et d'ingénierie.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Formation 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Module Siemens</span>
+                    <h3 class="font-bold text-xl my-2">Siemens TIA Portal & S7-1200/1500</h3>
+                    <p class="text-sm text-gray-600 mb-4">Programmation, diagnostic de pannes et configuration d'écrans IHM KTP.</p>
+                    <a href="#contact" class="text-s2amBlue font-semibold hover:underline text-sm">Demander le programme complet &rarr;</a>
+                </div>
+
+                <!-- Formation 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Module Variateurs</span>
+                    <h3 class="font-bold text-xl my-2">Paramétrage & Réglage des Variateurs</h3>
+                    <p class="text-sm text-gray-600 mb-4">Mise en service et dépannage des variateurs Altivar (Schneider), SINAMICS et Delta.</p>
+                    <a href="#contact" class="text-s2amBlue font-semibold hover:underline text-sm">Demander le programme complet &rarr;</a>
+                </div>
+
+                <!-- Formation 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Module Réseaux</span>
+                    <h3 class="font-bold text-xl my-2">Communication Modbus RS-485 & Profinet</h3>
+                    <p class="text-sm text-gray-600 mb-4">Câblage, adressage, diagnostic de bus de terrain et intégration multi-marques.</p>
+                    <a href="#contact" class="text-s2amBlue font-semibold hover:underline text-sm">Demander le programme complet &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FORMULAIRE DE CONTACT & DEMANDE DE DEVIS -->
+    <section id="contact" class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold text-s2amNavy mb-2 text-center">Contactez l'Équipe Technique S2AM</h2>
+            <p class="text-gray-600 text-center mb-6 text-sm">Une demande de devis matériel, de formation ou d'intervention de maintenance ? Remplissez ce formulaire.</p>
+
+            <form action="#" method="POST" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nom complet *</label>
+                        <input type="text" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-s2amBlue focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nom de l'Entreprise / Usine</label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-s2amBlue focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Adresse Email *</label>
+                        <input type="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-s2amBlue focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Téléphone *</label>
+                        <input type="tel" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-s2amBlue focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Type de demande *</label>
+                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-s2amBlue focus:outline-none">
+                        <option>Demande de devis Matériel / Pièce de rechange</option>
+                        <option>Dépannage / Intervention de maintenance urgente</option>
+                        <option>Inscription / Devis Formation Technique</option>
+                        <option>Projet d'Automatisme / Rétrofit de machine</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Détails de votre besoin (Références matériels, type de panne, etc.)</label>
+                    <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-s2amBlue focus:outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-s2amOrange hover:bg-orange-600 text-white font-bold py-3 rounded-md transition shadow-md">
+                    Envoyer ma Demande à S2AM
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 7. PIED DE PAGE (FOOTER) -->
+    <footer class="bg-s2amNavy text-white py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="bg-s2amOrange text-white font-black text-xl px-3 py-1 rounded inline-block mb-3">S2AM</div>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Société Africaine d'Automatisme et de Maintenance.<br>
+                    Fournisseur de solutions d'automatismes, vente de pièces industrielles et formation.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm uppercase mb-3 text-s2amOrange">Accès Rapide</h4>
+                <ul class="text-xs space-y-2 text-gray-300">
+                    <li><a href="#catalogue" class="hover:underline">Catalogue Pièces Rechange</a></li>
+                    <li><a href="#maintenance" class="hover:underline">Dépannage d'Urgence</a></li>
+                    <li><a href="#formation" class="hover:underline">Formations Siemens & Schneider</a></li>
+                    <li><a href="#contact" class="hover:underline">Demander un Devis</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-sm uppercase mb-3 text-s2amOrange">Contact Technique</h4>
+                <p class="text-xs text-gray-300 leading-relaxed">
+                    <i class="fa-solid fa-envelope mr-2"></i> s2ammaint@gmail.com<br>
+                    <i class="fa-solid fa-phone mr-2"></i> +221 77 407 72 42<br>
+                    <i class="fa-solid fa-phone mr-2"></i> +33 753258743
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-4 border-t border-gray-800 text-center text-xs text-gray-500">
+            &copy; 2026 S2AM - Tous droits réservés.
+        </div>
+    </footer>
+<!-- JavaScript du Carrousel (à placer avant la fermeture de </body>) -->
+    <script>
+        const slider = document.getElementById('hero-slider');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = 4;
+        let currentIndex = 0;
+        let slideInterval;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('bg-s2amOrange', idx === currentIndex);
+                dot.classList.toggle('w-6', idx === currentIndex);
+                dot.classList.toggle('bg-white/50', idx !== currentIndex);
+                dot.classList.toggle('w-3', idx !== currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+            resetTimer();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 4000); // Défilement toutes les 4s
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
+
+        updateSlider();
+        startTimer();
+    </script>
+</body>
+</html>
