@@ -209,7 +209,7 @@
 
                 // Application du filtre conditionnel
                 if (conditionFilter !== 'all') {
-                    query = query.eq('type_de_condition', conditionFilter);
+                    query = query.eq('condition_type', conditionFilter);
                 }
 
                 // Application de la recherche textuelle
@@ -246,7 +246,7 @@
             }
 
             products.forEach(item => {
-                const conditionBadge = getBadgeColor(item.type_de_condition);
+                const conditionBadge = getBadgeColor(item.condition_type);
                 const card = document.createElement('div');
                 card.className = 'bg-white rounded-lg border shadow-sm hover:shadow-md transition p-4 flex flex-col justify-between';
                 
@@ -257,7 +257,7 @@
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-xs font-bold px-2 py-0.5 rounded ${conditionBadge}">
-                                ${item.type_de_condition || 'Standard'}
+                                ${item.condition_type || 'Standard'}
                             </span>
                             <span class="text-xs text-gray-500 font-semibold">${item.marque || ''}</span>
                         </div>
