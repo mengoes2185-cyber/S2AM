@@ -531,78 +531,87 @@
     startTimer();
 </script>
 <!-- SDK Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script>
-        // Remplace avec tes vraies clés Supabase issues de Project Settings > API
-        const SUPABASE_URL = 'https://lvknmjwzyxvmnefjxnmp.supabase.co/rest/v1/';
-        const SUPABASE_KEY = 'sb_publishable_Gx-R0S-nvuwXMymbxdm-8g_FVGsgayj';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+<script>
+    // Configuration Supabase
+    const SUPABASE_URL = 'https://lvknmjwzyxvmnefjxnmp.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_Gx-R0S-nvuwXMymbxdm-8g_FVGsgayj';
 
-        // Chargement dynamique des produits
-        async function loadProducts(filterCondition = 'all') {
-            const container = document.getElementById('products-container');
-            if (!container) return;
+    // Création de l'instance client Supabase
+    const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-            container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Chargement du matériel...</p>';
-
-            let query = supabase.from('products').select('*');
-
-            if (filterCondition !== 'all') {
-                query = query.eq('condition_type', filterCondition);
-            }
-
-            const { data: products, error } = await query;
-
-            if (error) {
-                console.error('Erreur Supabase :', error);
-                container.innerHTML = '<p class="text-red-500 text-sm col-span-full text-center py-8">Erreur de chargement du catalogue.</p>';
-                return;
-            }
-
-            if (!products || products.length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Aucun matériel trouvé pour cette catégorie.</p>';
-                return;
-            }
-
-            container.innerHTML = products.map(item => `
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
-                    <div class="p-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">
-                            ${getBadgeLabel(item.condition_type)}
-                        </span>
-                        <span class="text-gray-400 text-xs float-right">${item.brand || ''}</span>
-                        <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
-                            <img src="${item.image_url || 'logo.png'}" alt="${item.title}" class="h-full object-contain" onerror="this.src='logo.png'">
-                        </div>
-                        <h3 class="font-bold text-gray-800 text-base mb-1">${item.title}</h3>
-                        <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference}</p>
-                    </div>
-                    <div class="p-4 border-t border-gray-100 bg-gray-50">
-                        <div class="text-lg font-bold text-s2amNavy mb-3">
-                            ${item.price ? item.price + ' FCFA' : 'Sur Devis'}
-                        </div>
-                        <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
-                            <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function getBadgeLabel(condition) {
-            switch(condition) {
-                case 'sealed': return 'Neuf Scellé';
-                case 'new': return 'Neuf';
-                case 'refurbished': return 'Reconditionné Testé';
-                case 'obsolete': return 'Obsolète / Rare';
-                default: return 'Disponible';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProducts('all');
+    // Fonction de filtrage appelée par les boutons
+    async function filterProducts(conditionFilter, btnElement) {
+        // Mise à jour visuelle des boutons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('bg-s2amNavy', 'text-white');
+            btn.classList.add('bg-white', 'text-gray-700');
         });
-    </script>
+
+        if (btnElement) {
+            btnElement.classList.remove('bg-white', 'text-gray-700');
+            btnElement.classList.add('bg-s2amNavy', 'text-white');
+        }
+
+        await loadProducts(conditionFilter);
+    }
+
+    // Chargement dynamique des données
+    async function loadProducts(filterCondition = 'all') {
+        const container = document.getElementById('products-container');
+        if (!container) return;
+
+        container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Chargement du matériel S2AM...</p>';
+
+        // Appel direct sur le client dbClient
+        let query = dbClient.from('catalogue').select('*');
+
+        if (filterCondition !== 'all') {
+            query = query.ilike('type_de_condition', `%${filterCondition}%`);
+        }
+
+        const { data: products, error } = await query;
+
+        if (error) {
+            console.error('Erreur Supabase :', error);
+            container.innerHTML = `<p class="text-red-500 text-sm col-span-full text-center py-8">Erreur de chargement : ${error.message}</p>`;
+            return;
+        }
+
+        if (!products || products.length === 0) {
+            container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Aucun matériel trouvé pour ce filtre.</p>';
+            return;
+        }
+
+        container.innerHTML = products.map(item => `
+            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                <div class="p-4">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">
+                        ${item.type_de_condition || 'Disponible'}
+                    </span>
+                    <span class="text-gray-400 text-xs float-right">${item.marque || ''}</span>
+                    <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                        <img src="${item.image_url || 'logo.png'}" alt="${item.Nom || ''}" class="h-full object-contain" onerror="this.src='logo.png'">
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-base mb-1">${item.Nom || 'Matériel Automatisme'}</h3>
+                    <p class="text-xs text-gray-500 mb-2">Réf: ${item.référence || 'N/A'}</p>
+                </div>
+                <div class="p-4 border-t border-gray-100 bg-gray-50">
+                    <div class="text-lg font-bold text-s2amNavy mb-3">
+                        ${item.prix ? item.prix + ' FCFA' : 'Sur Devis'}
+                    </div>
+                    <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
+                        <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadProducts('all');
+    });
+</script>
 </body>
 </html>
