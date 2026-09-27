@@ -566,7 +566,7 @@
     // 1. Définition de la requête
     let query = dbClient.from('catalogue').select('*');
 
-    // 2. Filtrage exact sur la colonne 'condition_type' (nom exact dans la BDD)
+    // 2. Filtrage exact sur la colonne 'condition_type'
     if (filterCondition !== 'all') {
         query = query.eq('condition_type', filterCondition);
     }
@@ -584,7 +584,7 @@
         return;
     }
 
-    // 3. Affichage avec les clés de ta base de données (reference sans accent)
+    // 3. Affichage dynamique des produits (champs adaptés à la BDD)
     container.innerHTML = products.map(item => `
         <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
             <div class="p-4">
