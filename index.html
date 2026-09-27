@@ -608,21 +608,7 @@
                 </button>
             </div>
         </div>
-    `).join('');
-}
-
-async function filterProducts(conditionFilter, btnElement) {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-s2amNavy', 'text-white');
-        btn.classList.add('bg-white', 'text-gray-700');
-    });
-
-    if (btnElement) {
-        btnElement.classList.remove('bg-white', 'text-gray-700');
-        btnElement.classList.add('bg-s2amNavy', 'text-white');
-    }
-
-    await loadProducts(conditionFilter);
+    `f).join('');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
