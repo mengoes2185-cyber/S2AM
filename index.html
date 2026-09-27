@@ -99,9 +99,9 @@
                 
                 <!-- Conteneur des slides -->
                 <div id="hero-slider" class="flex transition-transform duration-700 ease-in-out h-full w-full">
-                    <!-- Slide 1 -->
+                    <!-- Slide 4 -->
                     <div class="min-w-full h-full relative">
-                        <img src="photo1.jpeg" alt="S2AM Partenariat" class="w-full h-full object-cover">
+                        <img src="photo4.jpeg" alt="S2AM Partenariat" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
                             <p class="text-white font-semibold text-sm md:text-base">Partenariat & Expertises en Automatisme</p>
                         </div>
@@ -119,9 +119,10 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
                             <p class="text-white font-semibold text-sm md:text-base">Solutions d'Ingénierie & Maintenance</p>
                         </div>
-					<!-- Slide 4 -->
+					</div>	
+					<!-- Slide 1 -->
                     <div class="min-w-full h-full relative">
-                        <img src="photo4.jpeg" alt="S2AM Équipe Technique" class="w-full h-full object-cover">
+                        <img src="photo1.jpeg" alt="S2AM Équipe Technique" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
                             <p class="text-white font-semibold text-sm md:text-base">etude et conception de système</p>
                         </div>	
@@ -137,7 +138,7 @@
                 </button>
 
                 <!-- Points de navigation -->
-                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(0)"></button>
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(1)"></button>
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(2)"></button>
@@ -158,7 +159,29 @@
             </div>
             <a href="#" class="text-s2amBlue font-semibold hover:underline hidden sm:block">Voir tout le catalogue &rarr;</a>
         </div>
+       <!-- Barre de filtres par état -->
+<div class="flex flex-wrap gap-2 mb-6">
+    <button onclick="filterProducts('all')" class="filter-btn bg-s2amNavy text-white px-4 py-2 rounded-full text-xs font-semibold">
+        Tous les matériels
+    </button>
+    <button onclick="filterProducts('sealed')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+        Neuf Scellé
+    </button>
+    <button onclick="filterProducts('new')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+        Neuf
+    </button>
+    <button onclick="filterProducts('refurbished')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+        Reconditionné
+    </button>
+    <button onclick="filterProducts('obsolete')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+        Obsolète / Rare
+    </button>
+</div>
 
+<!-- Conteneur dynamique de la grille de produits -->
+<div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Les cartes de produits s'afficheront ici automatiquement depuis Supabase -->
+</div>
         <!-- Grille de produits -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
@@ -448,8 +471,9 @@
                 <h4 class="font-bold text-sm uppercase mb-3 text-s2amOrange">Contact Technique</h4>
                 <p class="text-xs text-gray-300 leading-relaxed">
                     <i class="fa-solid fa-envelope mr-2"></i> s2ammaint@gmail.com<br>
-                    <i class="fa-solid fa-phone mr-2"></i> +221 77 407 72 42<br>
+                    <i class="fa-solid fa-phone mr-2"></i> +221 771420833<br>
                     <i class="fa-solid fa-phone mr-2"></i> +33 753258743
+					<i class="fa-solid fa-whatsapp mr-2"></i> https://wa.me/+221771420833
                 </p>
             </div>
         </div>
@@ -459,52 +483,126 @@
     </footer>
 <!-- JavaScript du Carrousel (à placer avant la fermeture de </body>) -->
     <script>
-        const slider = document.getElementById('hero-slider');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = 4;
-        let currentIndex = 0;
-        let slideInterval;
+    const slider = document.getElementById('hero-slider');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = 4; // Ajusté pour 4 photos
+    let currentIndex = 0;
+    let slideInterval;
 
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('bg-s2amOrange', idx === currentIndex);
-                dot.classList.toggle('w-6', idx === currentIndex);
-                dot.classList.toggle('bg-white/50', idx !== currentIndex);
-                dot.classList.toggle('w-3', idx !== currentIndex);
-            });
-        }
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('bg-s2amOrange', idx === currentIndex);
+            dot.classList.toggle('w-6', idx === currentIndex);
+            dot.classList.toggle('bg-white/50', idx !== currentIndex);
+            dot.classList.toggle('w-3', idx !== currentIndex);
+        });
+    }
 
-        function goToSlide(index) {
-            currentIndex = index;
-            updateSlider();
-            resetTimer();
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        function startTimer() {
-            slideInterval = setInterval(nextSlide, 4000); // Défilement toutes les 4s
-        }
-
-        function resetTimer() {
-            clearInterval(slideInterval);
-            startTimer();
-        }
-
-        document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
-        document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
-
+    function goToSlide(index) {
+        currentIndex = index;
         updateSlider();
+        resetTimer();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+    function startTimer() {
+        slideInterval = setInterval(nextSlide, 4000);
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
         startTimer();
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
+    document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
+
+    updateSlider();
+    startTimer();
+</script>
+<!-- SDK Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        // Remplace avec tes vraies clés Supabase issues de Project Settings > API
+        const SUPABASE_URL = 'https://lvknmjwzyxvmnefjxnmp.supabase.co/rest/v1/';
+        const SUPABASE_KEY = 'sb_publishable_Gx-R0S-nvuwXMymbxdm-8g_FVGsgayj';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Chargement dynamique des produits
+        async function loadProducts(filterCondition = 'all') {
+            const container = document.getElementById('products-container');
+            if (!container) return;
+
+            container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Chargement du matériel...</p>';
+
+            let query = supabase.from('products').select('*');
+
+            if (filterCondition !== 'all') {
+                query = query.eq('condition_type', filterCondition);
+            }
+
+            const { data: products, error } = await query;
+
+            if (error) {
+                console.error('Erreur Supabase :', error);
+                container.innerHTML = '<p class="text-red-500 text-sm col-span-full text-center py-8">Erreur de chargement du catalogue.</p>';
+                return;
+            }
+
+            if (!products || products.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Aucun matériel trouvé pour cette catégorie.</p>';
+                return;
+            }
+
+            container.innerHTML = products.map(item => `
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                    <div class="p-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded">
+                            ${getBadgeLabel(item.condition_type)}
+                        </span>
+                        <span class="text-gray-400 text-xs float-right">${item.brand || ''}</span>
+                        <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                            <img src="${item.image_url || 'logo.png'}" alt="${item.title}" class="h-full object-contain" onerror="this.src='logo.png'">
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-base mb-1">${item.title}</h3>
+                        <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference}</p>
+                    </div>
+                    <div class="p-4 border-t border-gray-100 bg-gray-50">
+                        <div class="text-lg font-bold text-s2amNavy mb-3">
+                            ${item.price ? item.price + ' FCFA' : 'Sur Devis'}
+                        </div>
+                        <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
+                            <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getBadgeLabel(condition) {
+            switch(condition) {
+                case 'sealed': return 'Neuf Scellé';
+                case 'new': return 'Neuf';
+                case 'refurbished': return 'Reconditionné Testé';
+                case 'obsolete': return 'Obsolète / Rare';
+                default: return 'Disponible';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts('all');
+        });
     </script>
 </body>
 </html>
