@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S2AM - Société Africaine d'Automatisme et de Maintenance</title>
-    <!-- Framework CSS Tailwind pour un design moderne et responsive -->
+    <!-- Framework CSS Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -29,15 +29,15 @@
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <!-- Logo Image -->
             <div class="flex items-center space-x-3">
-                 <a href="#">
+                <a href="#">
                     <div class="logo"><img src="logo.png" alt="S2AM Logo" style="height: 80px;"></div>
-    </a>
-    <span class="hidden md:inline text-xs border-l border-gray-500 pl-3 leading-tight">
-        Société Africaine d'Automatisme<br>et de Maintenance
-    </span>
-</div>
+                </a>
+                <span class="hidden md:inline text-xs border-l border-gray-500 pl-3 leading-tight">
+                    Société Africaine d'Automatisme<br>et de Maintenance
+                </span>
+            </div>
 
-            <!-- Barre de recherche rapide de matériel -->
+            <!-- Barre de recherche rapide -->
             <div class="flex-1 max-w-md mx-6 hidden sm:block">
                 <form class="relative">
                     <input type="text" placeholder="Rechercher une référence (ex: 6ES7, ATV320, C2000)..." 
@@ -72,11 +72,10 @@
         </nav>
     </header>
 
-    <!-- 2. SECTION BANNIÈRE D'ACCUEIL (HERO CAROUSEL) -->
+    <!-- 2. BANNIÈRE D'ACCUEIL (HERO CAROUSEL) -->
     <section class="bg-gradient-to-r from-s2amNavy to-s2amBlue text-white py-12 px-4">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
             
-            <!-- Colonne Gauche : Texte & Boutons -->
             <div>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
                     Votre Partenaire Global en <span class="text-s2amOrange">Automatisme</span> & Maintenance
@@ -94,42 +93,34 @@
                 </div>
             </div>
 
-            <!-- Colonne Droite : Carrousel d'images -->
             <div class="relative w-full overflow-hidden rounded-2xl shadow-2xl border border-white/20 group h-[400px]">
-                
-                <!-- Conteneur des slides -->
                 <div id="hero-slider" class="flex transition-transform duration-700 ease-in-out h-full w-full">
-                    <!-- Slide 4 -->
                     <div class="min-w-full h-full relative">
                         <img src="photo4.jpeg" alt="S2AM Partenariat" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
                             <p class="text-white font-semibold text-sm md:text-base">Partenariat & Expertises en Automatisme</p>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
                     <div class="min-w-full h-full relative">
-                        <img src="photo2.jpeg" alt="S2AM Direction & Direction" class="w-full h-full object-cover">
+                        <img src="photo2.jpeg" alt="S2AM Direction" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
                             <p class="text-white font-semibold text-sm md:text-base">Accompagnement Sur-Mesure & Conseil</p>
                         </div>
                     </div>
-                    <!-- Slide 3 -->
                     <div class="min-w-full h-full relative">
                         <img src="photo3.jpeg" alt="S2AM Équipe Technique" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
                             <p class="text-white font-semibold text-sm md:text-base">Solutions d'Ingénierie & Maintenance</p>
                         </div>
-					</div>	
-					<!-- Slide 1 -->
+                    </div>	
                     <div class="min-w-full h-full relative">
-                        <img src="photo1.jpeg" alt="S2AM Équipe Technique" class="w-full h-full object-cover">
+                        <img src="photo1.jpeg" alt="S2AM Étude" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-6">
-                            <p class="text-white font-semibold text-sm md:text-base">etude et conception de système</p>
+                            <p class="text-white font-semibold text-sm md:text-base">Étude et conception de système</p>
                         </div>	
                     </div>
                 </div>
 
-                <!-- Boutons Précédent / Suivant -->
                 <button id="prevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-s2amOrange text-white p-2.5 rounded-full transition opacity-0 group-hover:opacity-100">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
@@ -137,19 +128,18 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
-                <!-- Points de navigation -->
                 <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(0)"></button>
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(1)"></button>
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(2)"></button>
-					<button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(2)"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(3)"></button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- 3. CATALOGUE PRODUITS & VENTE / DEVIS -->
+    <!-- 3. CATALOGUE PRODUITS DYNAMIQUE -->
     <section id="catalogue" class="max-w-7xl mx-auto px-4 py-12">
         <div class="flex justify-between items-center mb-8">
             <div>
@@ -158,35 +148,33 @@
             </div>
             <a href="#" class="text-s2amBlue font-semibold hover:underline hidden sm:block">Voir tout le catalogue &rarr;</a>
         </div>
-       <!-- Barre de filtres par état -->
-<<div class="flex flex-wrap gap-2 mb-6">
-    <button onclick="filterProducts('all', this)" class="filter-btn bg-s2amNavy text-white px-4 py-2 rounded-full text-xs font-semibold">
-        Tous les matériels
-    </button>
-    <button onclick="filterProducts('scellé', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
-        Neuf Scellé
-    </button>
-    <button onclick="filterProducts('nouveau', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
-        Neuf
-    </button>
-    <button onclick="filterProducts('remis à neuf', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
-        Reconditionné
-    </button>
-    <button onclick="filterProducts('obsolète', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
-        Obsolète / Rare
-    </button>
-</div>
 
-<!-- Conteneur dynamique de la grille de produits -->
-<div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <!-- Les cartes de produits s'afficheront ici automatiquement depuis Supabase -->
-</div>
-        <!-- Grille de produits -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Barre de filtres synchronisée avec Supabase -->
+        <div class="flex flex-wrap gap-2 mb-6">
+            <button onclick="filterProducts('all', this)" class="filter-btn bg-s2amNavy text-white px-4 py-2 rounded-full text-xs font-semibold">
+                Tous les matériels
+            </button>
+            <button onclick="filterProducts('scellé', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+                Neuf Scellé
+            </button>
+            <button onclick="filterProducts('nouveau', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+                Neuf
+            </button>
+            <button onclick="filterProducts('remis à neuf', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+                Reconditionné
+            </button>
+            <button onclick="filterProducts('obsolète', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+                Obsolète / Rare
+            </button>
+        </div>
+
+        <!-- Zone d'affichage dynamique des produits filtrés -->
+        <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Les cartes sont générées dynamiquement via Supabase -->
         </div>
     </section>
 
-    <!-- 4. SECTION PRESTATIONS : MAINTENANCE & DÉPANNAGE + NOS RÉALISATIONS -->
+    <!-- 4. MAINTENANCE & DÉPANNAGE -->
     <section id="maintenance" class="bg-white py-12 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-10">
@@ -220,7 +208,7 @@
                 </div>
             </div>
 
-            <!-- SOUS-SECTION : NOS RÉALISATIONS (PHOTOS & VIDÉOS) -->
+            <!-- GALERIE MULTIMÉDIA -->
             <div class="border-t border-gray-100 pt-12">
                 <div class="text-center max-w-2xl mx-auto mb-8">
                     <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Galerie Multimédia</span>
@@ -228,17 +216,10 @@
                     <p class="text-gray-600 text-sm mt-1">Aperçu en images et en vidéos de nos chantiers, armoires câblées et dépannages sur site.</p>
                 </div>
 
-                <!-- Grille des réalisations -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    
-                    <!-- Élément 1 : Photo d'une armoire électrique -->
                     <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
                         <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
-                            <!-- Remplacez le src par le chemin de votre image (ex: src="images/armoire1.jpg") -->
-                            <img src="armoire.jpeg" alt="Rénovation Armoire Électrique" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                            <div class="absolute inset-0 bg-s2amNavy/10 hidden items-center justify-center text-gray-400 text-xs">
-                                <i class="fa-solid fa-image text-3xl mr-2"></i> [Espace Photo Armoire]
-                            </div>
+                            <img src="armoire.jpeg" alt="Rénovation Armoire Électrique" class="w-full h-full object-cover">
                             <span class="absolute top-3 right-3 bg-s2amNavy text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-camera mr-1"></i> Photo</span>
                         </div>
                         <div class="p-4">
@@ -247,13 +228,10 @@
                         </div>
                     </div>
 
-                    <!-- Élément 2 : Vidéo d'une intervention ou test -->
                     <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
                         <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
-                            <!-- Vous pouvez utiliser une balise <video controls> ou intégrer un iframe YouTube/Local -->
                             <video class="w-full h-full object-cover" controls poster="poster_video.jpg">
                                 <source src="variateur.mp4" type="video/mp4">
-                                Votre navigateur ne supporte pas la lecture de vidéos.
                             </video>
                             <span class="absolute top-3 right-3 bg-s2amOrange text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-video mr-1"></i> Vidéo</span>
                         </div>
@@ -263,27 +241,24 @@
                         </div>
                     </div>
 
-                    <!-- Élément 3 : Autre Photo de dépannage -->
                     <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
                         <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
                             <video class="w-full h-full object-cover" controls poster="poster_video.jpg">
                                 <source src="FBR.mp4" type="video/mp4">
-                               
                             </video>
-                            <span class="absolute top-3 right-3 bg-s2amNavy text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-camera mr-1"></i> Photo</span>
+                            <span class="absolute top-3 right-3 bg-s2amNavy text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-video mr-1"></i> Vidéo</span>
                         </div>
                         <div class="p-4">
-                            <h4 class="font-bold text-base text-s2amNavy mb-1">retrofit d'un stérilisateur</h4>
-                            <p class="text-xs text-gray-600">automatisation de la régulation et mis en place d'un écran de supervision avec TIA portal.</p>
+                            <h4 class="font-bold text-base text-s2amNavy mb-1">Retrofit d'un stérilisateur</h4>
+                            <p class="text-xs text-gray-600">Automatisation de la régulation et mise en place d'un écran de supervision avec TIA Portal.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. SECTION FORMATIONS TECHNIQUES -->
+    <!-- 5. FORMATIONS TECHNIQUES -->
     <section id="formation" class="py-12 bg-s2amGray">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-10">
@@ -292,7 +267,6 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Formation 1 -->
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Module Siemens</span>
                     <h3 class="font-bold text-xl my-2">Siemens TIA Portal & S7-1200/1500</h3>
@@ -300,7 +274,6 @@
                     <a href="#contact" class="text-s2amBlue font-semibold hover:underline text-sm">Demander le programme complet &rarr;</a>
                 </div>
 
-                <!-- Formation 2 -->
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Module Variateurs</span>
                     <h3 class="font-bold text-xl my-2">Paramétrage & Réglage des Variateurs</h3>
@@ -308,7 +281,6 @@
                     <a href="#contact" class="text-s2amBlue font-semibold hover:underline text-sm">Demander le programme complet &rarr;</a>
                 </div>
 
-                <!-- Formation 3 -->
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Module Réseaux</span>
                     <h3 class="font-bold text-xl my-2">Communication Modbus RS-485 & Profinet</h3>
@@ -319,7 +291,7 @@
         </div>
     </section>
 
-    <!-- 6. FORMULAIRE DE CONTACT & DEMANDE DE DEVIS -->
+    <!-- 6. FORMULAIRE DE CONTACT -->
     <section id="contact" class="max-w-4xl mx-auto px-4 py-12">
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
             <h2 class="text-2xl font-bold text-s2amNavy mb-2 text-center">Contactez l'Équipe Technique S2AM</h2>
@@ -394,8 +366,8 @@
                 <p class="text-xs text-gray-300 leading-relaxed">
                     <i class="fa-solid fa-envelope mr-2"></i> s2ammaint@gmail.com<br>
                     <i class="fa-solid fa-phone mr-2"></i> +221 761420833<br>
-                    <i class="fa-solid fa-phone mr-2"></i> +33 753258743
-					<i class="fa-solid fa-link mr-2"></i> https://wa.me/+221761420833
+                    <i class="fa-solid fa-phone mr-2"></i> +33 753258743<br>
+                    <i class="fa-solid fa-link mr-2"></i> <a href="https://wa.me/+221761420833" target="_blank" class="hover:underline">WhatsApp S2AM</a>
                 </p>
             </div>
         </div>
@@ -403,149 +375,148 @@
             &copy; 2026 S2AM - Tous droits réservés.
         </div>
     </footer>
-<!-- JavaScript du Carrousel (à placer avant la fermeture de </body>) -->
+
+    <!-- SCRIPT DU CARROUSEL HERO -->
     <script>
-    const slider = document.getElementById('hero-slider');
-    const dots = document.querySelectorAll('.dot');
-    const totalSlides = 4; // Ajusté pour 4 photos
-    let currentIndex = 0;
-    let slideInterval;
+        const slider = document.getElementById('hero-slider');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = 4;
+        let currentIndex = 0;
+        let slideInterval;
 
-    function updateSlider() {
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, idx) => {
-            dot.classList.toggle('bg-s2amOrange', idx === currentIndex);
-            dot.classList.toggle('w-6', idx === currentIndex);
-            dot.classList.toggle('bg-white/50', idx !== currentIndex);
-            dot.classList.toggle('w-3', idx !== currentIndex);
-        });
-    }
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('bg-s2amOrange', idx === currentIndex);
+                dot.classList.toggle('w-6', idx === currentIndex);
+                dot.classList.toggle('bg-white/50', idx !== currentIndex);
+                dot.classList.toggle('w-3', idx !== currentIndex);
+            });
+        }
 
-    function goToSlide(index) {
-        currentIndex = index;
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+            resetTimer();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
+
         updateSlider();
-        resetTimer();
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    }
-
-    function startTimer() {
-        slideInterval = setInterval(nextSlide, 4000);
-    }
-
-    function resetTimer() {
-        clearInterval(slideInterval);
         startTimer();
-    }
+    </script>
 
-    document.getElementById('nextBtn').addEventListener('click', () => { nextSlide(); resetTimer(); });
-    document.getElementById('prevBtn').addEventListener('click', () => { prevSlide(); resetTimer(); });
+    <!-- SDK SUPABASE ET LOGIQUE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialisation Supabase
+        const SUPABASE_URL = 'https://lvknmjwzyxvmnefjxnmp.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_Gx-R0S-nvuwXMymbxdm-8g_FVGsgayj';
+        const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    updateSlider();
-    startTimer();
-</script>
-<!-- SDK Supabase -->
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        // Fonction de filtrage par état
+        async function filterProducts(conditionFilter, btnElement) {
+            // Mise à jour visuelle du bouton actif
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-s2amNavy', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
 
-<script>
-    // Configuration Supabase
-    const SUPABASE_URL = 'https://lvknmjwzyxvmnefjxnmp.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_Gx-R0S-nvuwXMymbxdm-8g_FVGsgayj';
+            if (btnElement) {
+                btnElement.classList.remove('bg-white', 'text-gray-700');
+                btnElement.classList.add('bg-s2amNavy', 'text-white');
+            }
 
-    // Client Supabase
-    const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            await loadProducts(conditionFilter);
+        }
 
-    // Fonction de filtrage appelée au clic
-    async function filterProducts(conditionFilter, btnElement) {
-        // Style visuel des boutons (activation/désactivation)
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('bg-s2amNavy', 'text-white');
-            btn.classList.add('bg-white', 'text-gray-700');
+        // Chargement des données depuis Supabase
+        async function loadProducts(filterCondition = 'all') {
+            const container = document.getElementById('products-container');
+            if (!container) return;
+
+            container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Chargement du matériel S2AM...</p>';
+
+            // 1. Requête vers la table catalogue
+            let query = dbClient.from('catalogue').select('*');
+
+            // 2. Filtre basé sur la colonne exacte 'type_de_condition' de Supabase
+            if (filterCondition !== 'all') {
+                query = query.eq('type_de_condition', filterCondition);
+            }
+
+            const { data: products, error } = await query;
+
+            if (error) {
+                console.error('Erreur Supabase :', error);
+                container.innerHTML = `<p class="text-red-500 text-sm col-span-full text-center py-8">Erreur de chargement : ${error.message}</p>`;
+                return;
+            }
+
+            if (!products || products.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Aucun matériel trouvé pour ce filtre.</p>';
+                return;
+            }
+
+            // Dictionnaire d'affichage propre pour les badges
+            const labelsFR = {
+                'scellé': 'Neuf Scellé',
+                'nouveau': 'Neuf',
+                'remis à neuf': 'Reconditionné',
+                'obsolète': 'Obsolète / Rare'
+            };
+
+            // 3. Injection HTML dans le conteneur #products-container
+            container.innerHTML = products.map(item => `
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                    <div class="p-4">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 uppercase rounded">
+                            ${labelsFR[item.type_de_condition] || item.type_de_condition || 'Disponible'}
+                        </span>
+                        <span class="text-gray-400 text-xs float-right font-medium">${item.marque || ''}</span>
+                        <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                            <img src="${item.image_url || 'logo.png'}" alt="${item.Nom || ''}" class="h-full object-contain" onerror="this.src='logo.png'">
+                        </div>
+                        <h3 class="font-bold text-gray-800 text-base mb-1">${item.Nom || 'Matériel Automatisme'}</h3>
+                        <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference || 'N/A'}</p>
+                        <p class="text-xs text-gray-600 line-clamp-2">${item.description || ''}</p>
+                    </div>
+                    <div class="p-4 border-t border-gray-100 bg-gray-50">
+                        <div class="text-lg font-bold text-s2amNavy mb-3">
+                            ${item.prix ? item.prix + ' FCFA' : 'Sur Devis'}
+                        </div>
+                        <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
+                            <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Lancement au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts('all');
         });
-
-        if (btnElement) {
-            btnElement.classList.remove('bg-white', 'text-gray-700');
-            btnElement.classList.add('bg-s2amNavy', 'text-white');
-        }
-
-        await loadProducts(conditionFilter);
-    }
-
-    // Chargement dynamique des données depuis Supabase
-    async function loadProducts(filterCondition = 'all') {
-        const container = document.getElementById('products-container');
-        if (!container) return;
-
-        container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Chargement du matériel S2AM...</p>';
-
-        // 1. Requête principale
-        let query = dbClient.from('catalogue').select('*');
-
-        // 2. Filtrage sur la colonne 'type_de_condition' de la BDD
-        if (filterCondition !== 'all') {
-            query = query.eq('type_de_condition', filterCondition);
-        }
-
-        const { data: products, error } = await query;
-
-        if (error) {
-            console.error('Erreur Supabase :', error);
-            container.innerHTML = `<p class="text-red-500 text-sm col-span-full text-center py-8">Erreur de chargement : ${error.message}</p>`;
-            return;
-        }
-
-        if (!products || products.length === 0) {
-            container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8">Aucun matériel trouvé pour ce filtre.</p>';
-            return;
-        }
-
-        // Correspondence propre pour l'affichage du badge
-        const labelsFR = {
-            'scellé': 'Neuf Scellé',
-            'nouveau': 'Neuf',
-            'remis à neuf': 'Reconditionné',
-            'obsolète': 'Obsolète / Rare'
-        };
-
-        // 3. Rendu HTML
-        container.innerHTML = products.map(item => `
-            <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
-                <div class="p-4">
-                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 uppercase rounded">
-                        ${labelsFR[item.type_de_condition] || item.type_de_condition || 'Disponible'}
-                    </span>
-                    <span class="text-gray-400 text-xs float-right font-medium">${item.marque || ''}</span>
-                    <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
-                        <img src="${item.image_url || 'logo.png'}" alt="${item.Nom || ''}" class="h-full object-contain" onerror="this.src='logo.png'">
-                    </div>
-                    <h3 class="font-bold text-gray-800 text-base mb-1">${item.Nom || 'Matériel Automatisme'}</h3>
-                    <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference || 'N/A'}</p>
-                    <p class="text-xs text-gray-600 line-clamp-2">${item.description || ''}</p>
-                </div>
-                <div class="p-4 border-t border-gray-100 bg-gray-50">
-                    <div class="text-lg font-bold text-s2amNavy mb-3">
-                        ${item.prix ? item.prix + ' FCFA' : 'Sur Devis'}
-                    </div>
-                    <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
-                        <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
-                    </button>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    // Premier chargement automatique au démarrage
-    document.addEventListener('DOMContentLoaded', () => {
-        loadProducts('all');
-    });
-</script>
+    </script>
 </body>
 </html>
