@@ -160,19 +160,19 @@
         </div>
        <!-- Barre de filtres par état -->
 <div class="flex flex-wrap gap-2 mb-6">
-    <button onclick="filterProducts('all')" class="filter-btn bg-s2amNavy text-white px-4 py-2 rounded-full text-xs font-semibold">
+    <button onclick="filterProducts('all', this)" class="filter-btn bg-s2amNavy text-white px-4 py-2 rounded-full text-xs font-semibold">
         Tous les matériels
     </button>
-    <button onclick="filterProducts('sealed')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+    <button onclick="filterProducts('sealed', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
         Neuf Scellé
     </button>
-    <button onclick="filterProducts('new')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+    <button onclick="filterProducts('new', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
         Neuf
     </button>
-    <button onclick="filterProducts('refurbished')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+    <button onclick="filterProducts('refurbished', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
         Reconditionné
     </button>
-    <button onclick="filterProducts('obsolete')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+    <button onclick="filterProducts('obsolete', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
         Obsolète / Rare
     </button>
 </div>
@@ -566,7 +566,7 @@
     // 1. Définition de la requête
     let query = dbClient.from('catalogue').select('*');
 
-    // 2. Filtrage exact sur la colonne 'condition_type'
+    // 2. Filtrage exact sur la colonne 'condition_type' (nom exact dans la BDD)
     if (filterCondition !== 'all') {
         query = query.eq('condition_type', filterCondition);
     }
@@ -584,7 +584,7 @@
         return;
     }
 
-    // 3. Affichage dynamique des produits (champs adaptés à la BDD)
+    // 3. Affichage avec les clés de ta base de données (reference sans accent)
     container.innerHTML = products.map(item => `
         <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
             <div class="p-4">
