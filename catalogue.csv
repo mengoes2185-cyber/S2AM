@@ -1,0 +1,5 @@
+Nom;reference;marque;condition_type;status;prix;description;image_url
+SIMATIC S7-1200 CPU 1214C;6ES7214-1AG40-0XB0;Siemens;sealed;in_stock;;Automate compact;s7-1200.jpg
+Altivar ATV320 5.5kW;ATV320HU55N4B;Schneider;refurbished;quote_only;;Variateur de vitesse;atv320.jpg
+Variateur Delta C2000+;VFD075C43A-21;Delta;new;in_stock;;Variateur forte puissance;c2000.jpg
+IHM KTP600 Basic Color;6AV6647-0AD11-3AX0;Siemens;obsolete;quote_only;;Écran tactile reconditionné;ktp600.jpg
