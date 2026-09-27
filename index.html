@@ -27,7 +27,6 @@
     <!-- 1. BARRE DE NAVIGATION & ENTÊTE -->
     <header class="bg-s2amNavy text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- Logo Image -->
             <div class="flex items-center space-x-3">
                 <a href="#">
                     <div class="logo"><img src="logo.png" alt="S2AM Logo" style="height: 80px;"></div>
@@ -37,7 +36,6 @@
                 </span>
             </div>
 
-            <!-- Barre de recherche rapide -->
             <div class="flex-1 max-w-md mx-6 hidden sm:block">
                 <form class="relative">
                     <input type="text" placeholder="Rechercher une référence (ex: 6ES7, ATV320, C2000)..." 
@@ -48,7 +46,6 @@
                 </form>
             </div>
 
-            <!-- Liens d'action rapide -->
             <div class="flex items-center space-x-4 text-sm">
                 <a href="#maintenance-urgence" class="bg-s2amOrange hover:bg-orange-600 text-white px-3 py-2 rounded-md font-semibold transition text-xs md:text-sm flex items-center">
                     <i class="fa-solid fa-triangle-exclamation mr-2"></i> Urgence Panne
@@ -60,7 +57,6 @@
             </div>
         </div>
 
-        <!-- Menu principal -->
         <nav class="bg-s2amBlue text-white text-sm border-t border-blue-900">
             <div class="max-w-7xl mx-auto px-4 flex space-x-6 overflow-x-auto py-2">
                 <a href="#catalogue" class="hover:text-s2amOrange whitespace-nowrap font-medium"><i class="fa-solid fa-boxes-stacked mr-1"></i> Catalogue Matériel</a>
@@ -72,10 +68,9 @@
         </nav>
     </header>
 
-    <!-- 2. BANNIÈRE D'ACCUEIL (HERO CAROUSEL) -->
+    <!-- 2. BANNIÈRE D'ACCUEIL -->
     <section class="bg-gradient-to-r from-s2amNavy to-s2amBlue text-white py-12 px-4">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-            
             <div>
                 <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
                     Votre Partenaire Global en <span class="text-s2amOrange">Automatisme</span> & Maintenance
@@ -135,7 +130,6 @@
                     <button class="dot w-3 h-3 rounded-full bg-white/50 transition" onclick="goToSlide(3)"></button>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -149,7 +143,7 @@
             <a href="#" class="text-s2amBlue font-semibold hover:underline hidden sm:block">Voir tout le catalogue &rarr;</a>
         </div>
 
-        <!-- Barre de filtres synchronisée avec Supabase -->
+        <!-- Boutons de filtres -->
         <div class="flex flex-wrap gap-2 mb-6">
             <button onclick="filterProducts('all', this)" class="filter-btn bg-s2amNavy text-white px-4 py-2 rounded-full text-xs font-semibold">
                 Tous les matériels
@@ -158,18 +152,18 @@
                 Neuf Scellé
             </button>
             <button onclick="filterProducts('new', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
-                Neuf </button>
-            <button onclick="filterProducts('remis à neuf', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+                Neuf
+            </button>
+            <button onclick="filterProducts('refurbished', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
                 Reconditionné
             </button>
-            <button onclick="filterProducts('obsolète', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
+            <button onclick="filterProducts('obsolete', this)" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-xs font-semibold border border-gray-200">
                 Obsolète / Rare
             </button>
         </div>
 
-        <!-- Zone d'affichage dynamique des produits filtrés -->
         <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Les cartes sont générées dynamiquement via Supabase -->
+            <!-- Cartes injectées via JS -->
         </div>
     </section>
 
@@ -207,7 +201,6 @@
                 </div>
             </div>
 
-            <!-- GALERIE MULTIMÉDIA -->
             <div class="border-t border-gray-100 pt-12">
                 <div class="text-center max-w-2xl mx-auto mb-8">
                     <span class="text-xs font-bold text-s2amOrange uppercase tracking-wider">Galerie Multimédia</span>
@@ -229,7 +222,7 @@
 
                     <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
                         <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
-                            <video class="w-full h-full object-cover" controls poster="poster_video.jpg">
+                            <video class="w-full h-full object-cover" controls>
                                 <source src="variateur.mp4" type="video/mp4">
                             </video>
                             <span class="absolute top-3 right-3 bg-s2amOrange text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-video mr-1"></i> Vidéo</span>
@@ -242,7 +235,7 @@
 
                     <div class="bg-s2amGray rounded-xl overflow-hidden shadow-sm border border-gray-200">
                         <div class="h-48 bg-gray-200 relative overflow-hidden flex items-center justify-center">
-                            <video class="w-full h-full object-cover" controls poster="poster_video.jpg">
+                            <video class="w-full h-full object-cover" controls>
                                 <source src="FBR.mp4" type="video/mp4">
                             </video>
                             <span class="absolute top-3 right-3 bg-s2amNavy text-white text-xs px-2 py-1 rounded font-medium"><i class="fa-solid fa-video mr-1"></i> Vidéo</span>
@@ -341,7 +334,7 @@
         </div>
     </section>
 
-    <!-- 7. PIED DE PAGE (FOOTER) -->
+    <!-- 7. PIED DE PAGE -->
     <footer class="bg-s2amNavy text-white py-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -428,14 +421,11 @@
     <!-- SDK SUPABASE ET LOGIQUE JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Initialisation Supabase
         const SUPABASE_URL = 'https://lvknmjwzyxvmnefjxnmp.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_Gx-R0S-nvuwXMymbxdm-8g_FVGsgayj';
         const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // Fonction de filtrage par état
         async function filterProducts(conditionFilter, btnElement) {
-            // Mise à jour visuelle du bouton actif
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-s2amNavy', 'text-white');
                 btn.classList.add('bg-white', 'text-gray-700');
@@ -449,17 +439,15 @@
             await loadProducts(conditionFilter);
         }
 
-        // Chargement des données depuis Supabase
         async function loadProducts(filterCondition = 'all') {
             const container = document.getElementById('products-container');
             if (!container) return;
 
             container.innerHTML = '<p class="text-gray-500 text-sm col-span-full text-center py-8"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Chargement du matériel S2AM...</p>';
 
-            // 1. Requête vers la table catalogue
             let query = dbClient.from('catalogue').select('*');
 
-            // 2. Filtre basé sur la colonne exacte 'condition_type' de Supabase
+            // Correspondance exacte avec les valeurs dans la table Supabase ('new', 'sealed', 'refurbished', 'obsolete')
             if (filterCondition !== 'all') {
                 query = query.eq('condition_type', filterCondition);
             }
@@ -477,15 +465,13 @@
                 return;
             }
 
-            // Dictionnaire d'affichage propre pour les badges
             const labelsFR = {
-                'scellé': 'Neuf Scellé',
-                'nouveau': 'Neuf',
-                'remis à neuf': 'Reconditionné',
-                'obsolète': 'Obsolète / Rare'
+                'sealed': 'Neuf Scellé',
+                'new': 'Neuf',
+                'refurbished': 'Reconditionné',
+                'obsolete': 'Obsolète / Rare'
             };
 
-            // 3. Injection HTML dans le conteneur #products-container
             container.innerHTML = products.map(item => `
                 <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
                     <div class="p-4">
@@ -494,9 +480,9 @@
                         </span>
                         <span class="text-gray-400 text-xs float-right font-medium">${item.marque || ''}</span>
                         <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
-                            <img src="${item.image_url || 'logo.png'}" alt="${item.Nom || ''}" class="h-full object-contain" onerror="this.src='logo.png'">
+                            <img src="${item.image_url || 'logo.png'}" alt="${item.reference || ''}" class="h-full object-contain" onerror="this.src='logo.png'">
                         </div>
-                        <h3 class="font-bold text-gray-800 text-base mb-1">${item.Nom || 'Matériel Automatisme'}</h3>
+                        <h3 class="font-bold text-gray-800 text-base mb-1">${item.reference || 'Matériel Automatisme'}</h3>
                         <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference || 'N/A'}</p>
                         <p class="text-xs text-gray-600 line-clamp-2">${item.description || ''}</p>
                     </div>
@@ -512,7 +498,6 @@
             `).join('');
         }
 
-        // Lancement au chargement de la page
         document.addEventListener('DOMContentLoaded', () => {
             loadProducts('all');
         });
