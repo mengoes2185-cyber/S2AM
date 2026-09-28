@@ -447,7 +447,6 @@
 
             let query = dbClient.from('catalogue').select('*');
 
-            // Correspondance exacte avec les valeurs dans la table Supabase ('new', 'sealed', 'refurbished', 'obsolete')
             if (filterCondition !== 'all') {
                 query = query.eq('condition_type', filterCondition);
             }
@@ -472,30 +471,42 @@
                 'obsolete': 'Obsolète / Rare'
             };
 
-            container.innerHTML = products.map(item => `
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
-                    <div class="p-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 uppercase rounded">
-                            ${labelsFR[item.condition_type] || item.condition_type || 'Disponible'}
-                        </span>
-                        <span class="text-gray-400 text-xs float-right font-medium">${item.marque || ''}</span>
-                        <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
-                            <img src="${item.image_url || 'logo.png'}" alt="${item.reference || ''}" class="h-full object-contain" onerror="this.src='logo.png'">
+            container.innerHTML = products.map(item => {
+                // Utilise le chemin d'image hébergé ou le logo par défaut
+                const imagePath = (item.image_url && item.image_url.trim() !== '') 
+                    ? item.image_url 
+                    : 'logo.png';
+
+                return `
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition border border-gray-100 overflow-hidden flex flex-col justify-between">
+                        <div class="p-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 uppercase rounded">
+                                ${labelsFR[item.condition_type] || item.condition_type || 'Disponible'}
+                            </span>
+                            <span class="text-gray-400 text-xs float-right font-medium">${item.marque || ''}</span>
+                            
+                            <div class="h-40 my-3 flex items-center justify-center bg-gray-50 rounded">
+                                <img src="${imagePath}" 
+                                     alt="${item.reference || 'Matériel S2AM'}" 
+                                     class="h-full w-full object-contain p-2" 
+                                     onerror="this.onerror=null; this.src='logo.png';">
+                            </div>
+
+                            <h3 class="font-bold text-gray-800 text-base mb-1">${item.reference || 'Matériel Automatisme'}</h3>
+                            <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference || 'N/A'}</p>
+                            <p class="text-xs text-gray-600 line-clamp-2">${item.description || ''}</p>
                         </div>
-                        <h3 class="font-bold text-gray-800 text-base mb-1">${item.reference || 'Matériel Automatisme'}</h3>
-                        <p class="text-xs text-gray-500 mb-2">Réf: ${item.reference || 'N/A'}</p>
-                        <p class="text-xs text-gray-600 line-clamp-2">${item.description || ''}</p>
-                    </div>
-                    <div class="p-4 border-t border-gray-100 bg-gray-50">
-                        <div class="text-lg font-bold text-s2amNavy mb-3">
-                            ${item.prix ? item.prix + ' FCFA' : 'Sur Devis'}
+                        <div class="p-4 border-t border-gray-100 bg-gray-50">
+                            <div class="text-lg font-bold text-s2amNavy mb-3">
+                                ${item.prix ? item.prix + ' FCFA' : 'Sur Devis'}
+                            </div>
+                            <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
+                                <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
+                            </button>
                         </div>
-                        <button class="w-full bg-s2amNavy hover:bg-s2amBlue text-white text-sm font-semibold py-2 rounded transition">
-                            <i class="fa-solid fa-file-signature mr-1"></i> Demander un Devis
-                        </button>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
